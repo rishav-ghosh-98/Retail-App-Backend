@@ -8,33 +8,31 @@ const ProductsData = JSON.parse(jsonData);
 initialiseDatabase();
 app.use(express.json());
 const PORT = 5000;
-const seedData = async () => {
-    try{
-        for(const prodData of ProductsData) {
-            const newProd = new Product({
-                title: prodData.title,
-                description: prodData.description,
-                category: prodData.category,
-                price: prodData.price,
-                stock: prodData.stock,
-                image: prodData.image,
-                rating: prodData.rating,
-                numReviews: prodData.numReviews
-            })
-            console.log(newProd)
-            await newProd.save()
-        }
-        console.log("Data seeding completed successfully!")
+// const seedData = async () => {
+//     try{
+//         for(const prodData of ProductsData) {
+//             const newProd = new Product({
+//                 title: prodData.title,
+//                 description: prodData.description,
+//                 category: prodData.category,
+//                 price: prodData.price,
+//                 stock: prodData.stock,
+//                 image: prodData.image,
+//                 rating: prodData.rating,
+//                 numReviews: prodData.numReviews
+//             })
+//             console.log(newProd)
+//             await newProd.save()
+//         }
+//         console.log("Data seeding completed successfully!")
         
-    }catch(error){
-        console.log("Error in seeding data", error)
+//     }catch(error){
+//         console.log("Error in seeding data", error)
         
-    }
-}
-app.listen(PORT, () => {
-  console.log("Successfully connected to port", PORT);
-});
-seedData();
+//     }
+// }
+
+// seedData();
 const getProducts = async() => {
     try{
         return await Product.find()
@@ -68,8 +66,8 @@ const getProductsById = async(productId) => {
 }
 app.get("/products/:productId", async(req,res) => {
     try{
-        const proudctId = req.params.productId
-        const product = await getProductsById(proudctId)
+        const productId = req.params.productId
+        const product = await getProductsById(productId)
         if(product){
             res.status(200).json(product)
         }else{
@@ -79,4 +77,32 @@ app.get("/products/:productId", async(req,res) => {
         res.status(500).json({error:"Error fetching Product By Id"})
     }
 })
+const getAllCategories = async () => {
+  try {
+    return await Product.distinct("category");
+  } catch (error) {
+    console.log("Error fetching categories", error);
+    throw error;
+  }
+};
+console.log("Categories route loaded");
+app.get("/categories", async (req, res) => {
+  try {
+    const categories = await getAllCategories();
+   
+    res.status(200).json({
+      data: {
+        categories: categories,
+      },
+    });
 
+  } catch (error) {
+    res.status(500).json({
+      error: "Error fetching categories",
+    });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log("Successfully connected to port", PORT);
+});
