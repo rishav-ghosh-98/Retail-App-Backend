@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Bluetooth Headphones",
+    "description": "Noise cancelling over-ear wireless headphones.",
+    "category": "electronics",
+    "price": 1999,
+    "stock": 25,
+    "image": "/images/Headphones.jpg",
+    "rating": 4.3,
+    "numReviews": 0
+  },
+  {
+    "title": "Smart Watch Series 7",
+    "description": "Fitness tracking smartwatch with AMOLED display.",
+    "category": "electronics",
+    "price": 3499,
+    "stock": 15,
+    "image": "/images/SmartWatch.jpg",
+    "rating": 4.5,
+    "numReviews": 0
+  },
+  {
+    "title": "Men's Casual Shirt",
+    "description": "Slim fit cotton casual shirt.",
+    "category": "fashion",
+    "price": 899,
+    "stock": 40,
+    "image": "/images/Shirt.jpg",
+    "rating": 4.1,
+    "numReviews": 0
+  },
+  {
+    "title": "Women's Summer Dress",
+    "description": "Lightweight floral summer dress.",
+    "category": "fashion",
+    "price": 1299,
+    "stock": 30,
+    "image": "/images/Dress.jpg",
+    "rating": 4.4,
+    "numReviews": 0
+  },
+  {
+    "title": "Running Shoes",
+    "description": "Breathable sports running shoes.",
+    "category": "fashion",
+    "price": 2499,
+    "stock": 20,
+    "image": "/images/Shoes.jpg",
+    "rating": 4.6,
+    "numReviews": 0
+  },
+  {
+    "title": "Gaming Mouse RGB",
+    "description": "High precision RGB gaming mouse.",
+    "category": "electronics",
+    "price": 1499,
+    "stock": 35,
+    "image": "/images/Mouse.jpg",
+    "rating": 4.2,
+    "numReviews": 0
+  },
+  {
+    "title": "Mechanical Keyboard",
+    "description": "RGB mechanical keyboard with blue switches.",
+    "category": "electronics",
+    "price": 3999,
+    "stock": 18,
+    "image": "/images/Keyboard.jpg",
+    "rating": 4.7,
+    "numReviews": 0
+  },
+  {
+    "title": "Office Backpack",
+    "description": "Water resistant laptop backpack.",
+    "category": "accessories",
+    "price": 1199,
+    "stock": 28,
+    "image": "/images/Backpack.jpg",
+    "rating": 4.3,
+    "numReviews": 0
+  },
+  {
+    "title": "Leather Wallet",
+    "description": "Genuine leather bi-fold wallet.",
+    "category": "accessories",
+    "price": 699,
+    "stock": 50,
+    "image": "/images/Wallet.jpg",
+    "rating": 4.0,
+    "numReviews": 0
+  },
+  {
+    "title": "Sunglasses UV Protection",
+    "description": "Stylish UV protected sunglasses.",
+    "category": "accessories",
+    "price": 799,
+    "stock": 45,
+    "image": "/images/Sunglass.jpg",
+    "rating": 4.2,
+    "numReviews": 0
+  },
+  {
+    "title": "Bluetooth Speaker",
+    "description": "Portable waterproof Bluetooth speaker.",
+    "category": "electronics",
+    "price": 1799,
+    "stock": 22,
+    "image": "/images/Speaker.jpg",
+    "rating": 4.4,
+    "numReviews": 0
+  },
+  {
+    "title": "Denim Jeans",
+    "description": "Stretchable slim fit denim jeans.",
+    "category": "fashion",
+    "price": 1499,
+    "stock": 38,
+    "image": "/images/Jeans.jpg",
+    "rating": 4.1,
+    "numReviews": 0
+  },
+  {
+    "title": "Protein Whey Powder",
+    "description": "High quality whey protein supplement.",
+    "category": "health",
+    "price": 2999,
+    "stock": 12,
+    "image": "/images/Protein.jpg",
+    "rating": 4.5,
+    "numReviews": 0
+  },
+  {
+    "title": "Yoga Mat",
+    "description": "Non-slip eco-friendly yoga mat.",
+    "category": "health",
+    "price": 999,
+    "stock": 33,
+    "image": "/images/Mat.jpg",
+    "rating": 4.3,
+    "numReviews": 0
+  },
+  {
+    "title": "Electric Kettle",
+    "description": "1.5L stainless steel electric kettle.",
+    "category": "home",
+    "price": 1299,
+    "stock": 26,
+    "image": "/images/Kettle.jpg",
+    "rating": 4.2,
+    "numReviews": 0
+  },
+  {
+    "title": "Non-stick Frying Pan",
+    "description": "Durable non-stick frying pan.",
+    "category": "home",
+    "price": 899,
+    "stock": 34,
+    "image": "/images/Pan.jpg",
+    "rating": 4.1,
+    "numReviews": 0
+  },
+  {
+    "title": "Study Table Lamp",
+    "description": "LED study lamp with brightness control.",
+    "category": "home",
+    "price": 1099,
+    "stock": 19,
+    "image": "/images/Lamp.jpg",
+    "rating": 4.3,
+    "numReviews": 0
+  },
+  {
+    "title": "Power Bank 20000mAh",
+    "description": "Fast charging 20000mAh power bank.",
+    "category": "electronics",
+    "price": 1599,
+    "stock": 27,
+    "image": "/images/Powerbank.jpg",
+    "rating": 4.4,
+    "numReviews": 0
+  },
+  {
+    "title": "Casual Sneakers",
+    "description": "Comfortable everyday sneakers.",
+    "category": "fashion",
+    "price": 2199,
+    "stock": 23,
+    "image": "/images/Sneakers.jpg",
+    "rating": 4.2,
+    "numReviews": 0
+  },
+  {
+    "title": "Ceramic Coffee Mug Set",
+    "description": "Set of 6 ceramic coffee mugs.",
+    "category": "home",
+    "price": 599,
+    "stock": 60,
+    "image": "/images/Mug.jpg",
+    "rating": 4.0,
+    "numReviews": 0
+  }
+]
