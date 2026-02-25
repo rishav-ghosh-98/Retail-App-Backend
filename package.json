@@ -1,0 +1,25 @@
+{
+  "name": "retail",
+  "version": "1.0.0",
+  "description": "rtailapi",
+  "keywords": [
+    "npm",
+    "run",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/rishav-ghosh-98/Retail-App-Backend.git"
+  },
+  "license": "ISC",
+  "author": "Rishav",
+  "type": "commonjs",
+  "main": "y",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "dependencies": {
+    "env": "^0.0.2",
+    "mongo": "^0.1.0"
+  }
+}
