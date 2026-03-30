@@ -150,7 +150,30 @@ app.get("/categories", async (req, res) => {
     });
   }
 });
+const getCategoryById = async(categoryId) => {
+   try{
+        console.log(categoryId)
+         return await Category.findById(categoryId)
+         
+    }catch(error){
+        console.log("Error in getting Category by Id", error)
+        throw error;
+    }
+}
+app.get("/categories/:categoryId" , async(req,res) => {
 
+  try{
+    const categoryId = req.params.categoryId;
+    const category = await getCategoryById(categoryId);
+     if(category){
+            res.status(200).json(category)
+        }else{
+            res.status(200).json("Category id not found")
+        }
+  }catch(error){
+      res.status(500).json({error:"Error fetching Category By Id"})
+  }
+})
 app.listen(PORT, () => {
   console.log("Successfully connected to port", PORT);
 });
