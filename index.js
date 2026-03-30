@@ -1,6 +1,7 @@
 const { initialiseDatabase } = require("./db/db.connect")
 const fs = require("fs");
 const Product = require("./models/products.models")
+const Category = require("./models/category.models")
 const express = require("express");
 const app = express();
 const jsonData = fs.readFileSync("products.json", "utf-8");
@@ -28,11 +29,58 @@ const PORT = 5000;
         
 //     }catch(error){
 //         console.log("Error in seeding data", error)
-        
 //     }
 // }
 
 // seedData();
+
+// const seedCategories = async () => {
+//     try {
+//         const categories = [
+//             {
+//                 name: "electronics",
+//                 description: "Electronic devices and gadgets",
+//                 image: "electronics.avif"
+//             },
+//             {
+//                 name: "fashion",
+//                 description: "Clothing and fashion items",
+//                 image: "fashion.avif"
+//             },
+//             {
+//                 name: "accessories",
+//                 description: "Accessories and add-ons",
+//                 image: "accessories.avif"
+//             },
+//             {
+//                 name: "health",
+//                 description: "Health and wellness products",
+//                 image: "health.avif"
+//             },
+//             {
+//                 name: "home",
+//                 description: "Home and living products",
+//                 image: "home.avif"
+//             }
+//         ];
+        
+//         for (const catData of categories) {
+//             const newCategory = new Category({
+//                 name: catData.name,
+//                 description: catData.description,
+//                 image: catData.image
+//             });
+//             console.log(newCategory);
+//             await newCategory.save();
+//         }
+//         console.log("Category seeding completed successfully!");
+//     } catch (error) {
+//         console.log("Error in seeding categories", error);
+//     }
+// };
+
+// seedCategories();
+
 const getProducts = async() => {
     try{
         return await Product.find()
@@ -79,7 +127,7 @@ app.get("/products/:productId", async(req,res) => {
 })
 const getAllCategories = async () => {
   try {
-    return await Product.distinct("category");
+    return await Category.find();
   } catch (error) {
     console.log("Error fetching categories", error);
     throw error;
