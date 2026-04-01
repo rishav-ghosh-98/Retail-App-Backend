@@ -11,6 +11,7 @@ const jsonData = fs.readFileSync("products.json", "utf-8");
 const ProductsData = JSON.parse(jsonData);
 initialiseDatabase();
 app.use(express.json());
+app.use(cors());
 const PORT = 5000;
 // const seedData = async () => {
 //     try{
