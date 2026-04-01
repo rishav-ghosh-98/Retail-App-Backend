@@ -8,7 +8,7 @@ const User = require("./models/user.models");
 const express = require("express");
 const app = express();
 const jsonData = fs.readFileSync("products.json", "utf-8");
-const ProductsData = JSON.parse(jsonData);
+// const ProductsData = JSON.parse(jsonData);
 initialiseDatabase();
 app.use(express.json());
 app.use(cors());
@@ -84,41 +84,41 @@ const PORT = 5000;
 // };
 
 // seedCategories();
-const seedUser = async () => {
-  try {
-    const userData = {
-      name: "John Doe",
-      email: "john@example1.com",
-      wishlist: [],
-      cart: [],
-      addresses: [
-        {
-          fullName: "John Mary",
-          street: "123 Main Street",
-          city: "New York",
-          state: "NY",
-          postalCode: "10001",
-          country: "USA"
-        }
-      ]
-    };
+// const seedUser = async () => {
+//   try {
+//     const userData = {
+//       name: "John Doe",
+//       email: "john@example1.com",
+//       wishlist: [],
+//       cart: [],
+//       addresses: [
+//         {
+//           fullName: "John Mary",
+//           street: "123 Main Street",
+//           city: "New York",
+//           state: "NY",
+//           postalCode: "10001",
+//           country: "USA"
+//         }
+//       ]
+//     };
 
-    const existingUser = await User.findOne({ email: userData.email });
-    if (existingUser) {
-      console.log("User already exists with this email");
-      return;
-    }
+//     const existingUser = await User.findOne({ email: userData.email });
+//     if (existingUser) {
+//       console.log("User already exists with this email");
+//       return;
+//     }
 
-    const newUser = new User(userData);
-    await newUser.save();
-    console.log("✅ User seeded successfully!");
-  } catch (error) {
-    console.log("❌ Error seeding user:", error);
-  }
-};
+//     const newUser = new User(userData);
+//     await newUser.save();
+//     console.log("✅ User seeded successfully!");
+//   } catch (error) {
+//     console.log("❌ Error seeding user:", error);
+//   }
+// };
 
 
-seedUser();
+// seedUser();
 
 app.listen(PORT, () => {
   console.log("Successfully connected to port", PORT);
