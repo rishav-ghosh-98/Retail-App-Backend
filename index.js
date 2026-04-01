@@ -7,7 +7,7 @@ const Category = require("./models/category.models");
 const User = require("./models/user.models");
 const express = require("express");
 const app = express();
-const jsonData = fs.readFileSync("products.json", "utf-8");
+// const jsonData = fs.readFileSync("products.json", "utf-8");
 // const ProductsData = JSON.parse(jsonData);
 initialiseDatabase();
 app.use(express.json());
