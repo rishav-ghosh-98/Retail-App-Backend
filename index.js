@@ -1,3 +1,5 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 const { initialiseDatabase } = require("./db/db.connect");
 const fs = require("fs");
 const Product = require("./models/products.models");
@@ -81,41 +83,41 @@ const PORT = 5000;
 // };
 
 // seedCategories();
-// const seedUser = async () => {
-//   try {
-//     const userData = {
-//       name: "John Doe",
-//       email: "john@example.com",
-//       wishlist: [],
-//       cart: [],
-//       addresses: [
-//         {
-//           fullName: "John Doe",
-//           street: "123 Main Street",
-//           city: "New York",
-//           state: "NY",
-//           postalCode: "10001",
-//           country: "USA"
-//         }
-//       ]
-//     };
+const seedUser = async () => {
+  try {
+    const userData = {
+      name: "John Doe",
+      email: "john@example1.com",
+      wishlist: [],
+      cart: [],
+      addresses: [
+        {
+          fullName: "John Mary",
+          street: "123 Main Street",
+          city: "New York",
+          state: "NY",
+          postalCode: "10001",
+          country: "USA"
+        }
+      ]
+    };
 
-//     const existingUser = await User.findOne({ email: userData.email });
-//     if (existingUser) {
-//       console.log("User already exists with this email");
-//       return;
-//     }
+    const existingUser = await User.findOne({ email: userData.email });
+    if (existingUser) {
+      console.log("User already exists with this email");
+      return;
+    }
 
-//     const newUser = new User(userData);
-//     await newUser.save();
-//     console.log("✅ User seeded successfully!");
-//   } catch (error) {
-//     console.log("❌ Error seeding user:", error);
-//   }
-// };
+    const newUser = new User(userData);
+    await newUser.save();
+    console.log("✅ User seeded successfully!");
+  } catch (error) {
+    console.log("❌ Error seeding user:", error);
+  }
+};
 
-// Uncomment the line below to seed a user when server starts
-// seedUser();
+
+seedUser();
 
 app.listen(PORT, () => {
   console.log("Successfully connected to port", PORT);
