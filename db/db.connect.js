@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
   dns.setServers(['8.8.8.8', '8.8.4.4']);
 }
 
-const mongoUri = process.env.MONGODB;
+const mongoUri = process.env.MONGODB_URI;
 
 const initialiseDatabase = async () => {
   await mongoose
