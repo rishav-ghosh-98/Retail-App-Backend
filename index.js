@@ -219,3 +219,9 @@ app.delete("/wishlist/:userId/:productId", async (req, res) => {
     });
   }
 });
+app.get("/test", (req, res) => {
+  res.json({
+    mongoUri: process.env.MONGODB_URI ? "URI exists" : "URI is MISSING",
+    nodeEnv: process.env.NODE_ENV,
+  });
+});
