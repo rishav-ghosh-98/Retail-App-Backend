@@ -8,15 +8,24 @@ if (process.env.NODE_ENV !== 'production') {
 
 const mongoUri = process.env.MONGODB_URI;
 
+let isConnected = false; // ✅ cache the connection
+
 const initialiseDatabase = async () => {
-  await mongoose
-    .connect(mongoUri, {
+  if (isConnected) {
+    console.log("Using existing DB connection");
+    return;
+  }
+
+  try {
+    await mongoose.connect(mongoUri, {
       serverSelectionTimeoutMS: 10000,
-    })
-    .then(() => {
-      console.log("Connected to DataBase");
-    })
-    .catch((error) => console.log("Error connecting to database", error));
+    });
+    isConnected = true;
+    console.log("Connected to DataBase");
+  } catch (error) {
+    console.log("Error connecting to database", error);
+    throw error; // ✅ throw so routes can catch it
+  }
 };
 
 module.exports = { initialiseDatabase };

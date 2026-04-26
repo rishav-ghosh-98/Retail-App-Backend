@@ -6,10 +6,9 @@ const User = require("./models/user.models");
 const express = require("express");
 const app = express();
 
-initialiseDatabase();
 app.use(express.json());
 app.use(cors());
-
+// initialiseDatabase(); commeneted out required only for local use connection
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
@@ -27,6 +26,7 @@ const getProducts = async () => {
 
 app.get("/products", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const products = await getProducts();
     if (products.length > 0) {
       res.status(200).json({ message: "All products fetched", products });
@@ -40,7 +40,6 @@ app.get("/products", async (req, res) => {
 
 const getProductsById = async (productId) => {
   try {
-    console.log(productId);
     return await Product.findById(productId);
   } catch (error) {
     console.log("Error in getting products by Id", error);
@@ -50,6 +49,7 @@ const getProductsById = async (productId) => {
 
 app.get("/products/:productId", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const productId = req.params.productId;
     const product = await getProductsById(productId);
     if (product) {
@@ -71,10 +71,9 @@ const getAllCategories = async () => {
   }
 };
 
-console.log("Categories route loaded");
-
 app.get("/categories", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const categories = await getAllCategories();
     res.status(200).json({
       data: {
@@ -82,15 +81,12 @@ app.get("/categories", async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({
-      error: "Error fetching categories",
-    });
+    res.status(500).json({ error: "Error fetching categories" });
   }
 });
 
 const getCategoryById = async (categoryId) => {
   try {
-    console.log(categoryId);
     return await Category.findById(categoryId);
   } catch (error) {
     console.log("Error in getting Category by Id", error);
@@ -100,6 +96,7 @@ const getCategoryById = async (categoryId) => {
 
 app.get("/categories/:categoryId", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const categoryId = req.params.categoryId;
     const category = await getCategoryById(categoryId);
     if (category) {
@@ -122,32 +119,23 @@ const getWishlistByUserId = async (userId) => {
 
 app.get("/wishlist/:userId", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const userId = req.params.userId;
     const user = await getWishlistByUserId(userId);
     if (user) {
-      res.status(200).json({
-        data: {
-          wishlist: user.wishlist,
-        },
-      });
+      res.status(200).json({ data: { wishlist: user.wishlist } });
     } else {
-      res.status(404).json({
-        message: "User not found",
-      });
+      res.status(404).json({ message: "User not found" });
     }
   } catch (error) {
-    res.status(500).json({
-      error: "Error fetching wishlist",
-    });
+    res.status(500).json({ error: "Error fetching wishlist" });
   }
 });
 
 const addProductToWishlist = async (userId, productId) => {
   try {
     const user = await User.findById(userId);
-    if (!user) {
-      return null;
-    }
+    if (!user) return null;
     if (!user.wishlist.includes(productId)) {
       user.wishlist.push(productId);
     }
@@ -160,34 +148,27 @@ const addProductToWishlist = async (userId, productId) => {
 
 app.post("/wishlist/:userId", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const userId = req.params.userId;
     const productId = req.body.productId;
     const updatedUser = await addProductToWishlist(userId, productId);
     if (updatedUser) {
       res.status(200).json({
         message: "Product added to wishlist",
-        data: {
-          wishlist: updatedUser.wishlist,
-        },
+        data: { wishlist: updatedUser.wishlist },
       });
     } else {
-      res.status(404).json({
-        message: "User not found",
-      });
+      res.status(404).json({ message: "User not found" });
     }
   } catch (error) {
-    res.status(500).json({
-      error: "Error adding product to wishlist",
-    });
+    res.status(500).json({ error: "Error adding product to wishlist" });
   }
 });
 
 const removeProductFromWishlist = async (userId, productId) => {
   try {
     const user = await User.findById(userId);
-    if (!user) {
-      return null;
-    }
+    if (!user) return null;
     user.wishlist = user.wishlist.filter((id) => id.toString() !== productId);
     return await user.save();
   } catch (error) {
@@ -198,30 +179,19 @@ const removeProductFromWishlist = async (userId, productId) => {
 
 app.delete("/wishlist/:userId/:productId", async (req, res) => {
   try {
+    await initialiseDatabase(); // ✅
     const userId = req.params.userId;
     const productId = req.params.productId;
     const updatedUser = await removeProductFromWishlist(userId, productId);
     if (updatedUser) {
       res.status(200).json({
         message: "Product removed from wishlist",
-        data: {
-          wishlist: updatedUser.wishlist,
-        },
+        data: { wishlist: updatedUser.wishlist },
       });
     } else {
-      res.status(404).json({
-        message: "User not found",
-      });
+      res.status(404).json({ message: "User not found" });
     }
   } catch (error) {
-    res.status(500).json({
-      error: "Error removing product from wishlist",
-    });
+    res.status(500).json({ error: "Error removing product from wishlist" });
   }
-});
-app.get("/test", (req, res) => {
-  res.json({
-    mongoUri: process.env.MONGODB_URI ? "URI exists" : "URI is MISSING",
-    nodeEnv: process.env.NODE_ENV,
-  });
 });
